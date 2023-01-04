@@ -1,4 +1,6 @@
 `use strict`;
+
+//基本事項
 const number = 50;
 let price = 0.8;
 let boxnumber = '11';
@@ -74,11 +76,22 @@ function showAd(message){ //仮引数
 
 showAd('hello world');
 
-function sum(a, b, c){
-  return a + b + c;
-}
+// function sum(a, b, c){
+//   return a + b + c;
+// };
+
+//無名関数
+
+// const sum = function(a, b, c) {
+//   return a + b + c;
+// }
+
+//アロー関数
+
+const sum = (a, b, c) => a + b + c;
+
 
 let total = sum(1,2,3) + sum(4,5,6);
 console.log(total);
 
-//無名関数
+//スコープ範囲で分けて同名の変数を用いる場合はブロック{}で囲む
