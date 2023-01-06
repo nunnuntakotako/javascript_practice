@@ -227,5 +227,64 @@
   }
   //setInterval(,第二引数)はms単位で
   //インターバルごとに表示される
-  let intervalId = setInterval(showTime, 1000);
+// let intervalId = setInterval(showTime, 1000);
+
+}
+
+{
+  function showTime(){
+    console.log(new Date());
+  }
+  //setTimeout(,第二引数) 指定時間後に処理をする
+  //setTimeout( showTime,10000);
+  //関数の中に上記を入れれば決まった時間間隔での繰り返し処理も可能となる。
+}
+
+{
+  //文字列の編集
+  //大文字に変換
+  let name = `hiraoka`;
+  console.log(name.toLocaleUpperCase()); //文字列しか対応していない
+
+  //例外処理
+  //対応していないオブジェクト型で処理が止まるなど、
+  //その処理をスキップして進めたりする
+  let number = 10; //数値を入れる
+  try {
+    console.log(number.toLocaleUpperCase());
+  }catch (e){
+    console.log(e);
+  }
+  console.log(`Finish`);
+}
+
+{
+  //同じオブジェクト内のプロパティにアクセスする場合は
+  //thisを使えばいい
+
+  const posts = [
+    {
+      text:`hello`,
+      likeCount:0,
+      //下記のように関数をプロパティとして扱う場合はその関数を「メソッド」という
+      // show: function(){
+      //   console.log(`${this.text} - ${this.likeCount}いいね`);
+      show(){
+         console.log(`${this.text} - ${this.likeCount}いいね`);
+      },
+    },
+    {
+      text:`hi!`,
+      likeCount:0,
+      show: function(){
+        console.log(`${this.text} - ${this.likeCount}いいね`);
+      },
+    },
+  ];
+  posts[0].show();
+}
+
+//オブジェクトをテンプレート化するクラスを作る
+{
+  
 }
