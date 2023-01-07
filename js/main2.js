@@ -286,5 +286,86 @@
 
 //オブジェクトをテンプレート化するクラスを作る
 {
-  
+  //クラスから作られるオブジェクトをインスタンスという
+  //クラス内で作られるオブジェクトはthisというキーワードをつける
+  //new クラス名(引数) でインスタンスを作ることができる
+
+  class Post{
+    //constructor() 特殊なメソッドで初期化
+    constructor(text){
+      this.text = text;
+      this.likeCount = 0;
+    }
+
+    show() {
+      console.log(`${this.text} - ${this.likeCount}いいね`);
+    }
+
+    like() {
+      this.likeCount++;
+    }
+    //静的メソッドをつくる
+    //インスタンスを介さずに直接クラスから呼び出す仕組みもある
+    //個々のオブジェクトであるインスタンスとは直接関係ないけれど、機能を追加する場合に便利
+    //静的メソッドではthisは使えない
+
+    static showInfo(){
+      console.log(`Post class ver1.0`);
+    }
+  }
+  //ここまででクラスが完成した
+
+  const posts = [
+    new Post(`Jsの勉強中です`),
+    new Post(`プログラミングが楽しい！`),
+  ];
+  posts[0].like();
+  posts[0].show();
+  posts[1].show();
+  //like() のように何か処理を加えたい場合は、メソッドを介して繋ぐようにしていく。
+  //posts[0].likeCount++;でもlike()と同様の処理となるが、同じ処理を他のプロパティにもつける場合、変更が生じると、全て書き換える必要があるのでこのようにする。
+
+  Post.showInfo();
+}
+
+{
+//クラスの継承について extends
+  class Post { // 親クラス
+    constructor(text) {
+      this.text = text;
+      this.likeCount = 0;
+    }
+
+    show() {
+      console.log(`${this.text} - ${this.likeCount} likes`);
+    }
+
+    like() {
+      this.likeCount++;
+      this.show();
+    }
+  }
+
+  class SponsoredPost extends Post { // 子クラス
+    constructor(text, sponsor) {
+      //子クラスのconstructor()でthisキーワードを使うには、connstructor()の最初でsuper()としてあげる必要がある。
+      super(text);
+      this.sponsor = sponsor;
+    }
+
+    show() {
+      //super.で繋げれば親クラスのメソッドを呼べる
+      super.show();
+      console.log(`... sponsored by ${this.sponsor}`);
+    }
+  }
+
+  const posts = [
+    new Post('JavaScriptの勉強中…'),
+    new Post('プログラミング楽しい！'),
+    new SponsoredPost('3分動画でマスターしよう', 'dotinstall'),
+  ];
+
+  posts[2].show();
+  posts[2].like();
 }
