@@ -6,15 +6,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>jsの練習2</title>
   <style>
-
+    body,section {
+      margin: 0 auto;
+    }
+    section {
+      background-color:cornsilk;
+    }
+    section + section {
+      margin-bottom: 30px;
+    }
   </style>
 </head>
 <body>
-  <button>Run</button>
-  <ul>
-    <li>item 0</li>
-    <li>item 1</li>
-  </ul>
+  <section>
+    <button>Run</button>
+    <button id="copybutton">copy</button>
+    <button id="remove">削除</button>
+    <ul>
+      <li>item 0</li>
+      <li>item 1</li>
+      <li>item 2</li>
+    </ul>
+  </section>
+    <input type="text">
+    <button id="post">add</button>
+    <div class="container">
+      <p></p>
+    </div>
   <script src="js/main4.js"></script>
 </body>
 </html>
